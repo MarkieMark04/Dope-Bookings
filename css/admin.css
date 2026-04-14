@@ -147,6 +147,7 @@ button {
   gap: 0;
   margin-bottom: 0;
   align-items: flex-end;
+  flex-wrap: wrap;
 }
 
 .admin-tab {
@@ -178,6 +179,29 @@ button {
 
 .admin-tab + .admin-tab {
   margin-left: -1px;
+}
+
+.admin-frontend-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding: 10px 18px;
+  border-radius: 16px 16px 0 0;
+  background: var(--accent-strong);
+  color: var(--button-solid-text);
+  text-decoration: none;
+  font-weight: 800;
+  box-shadow: var(--shadow-sm);
+  transition: transform 180ms ease, box-shadow 180ms ease, background 180ms ease;
+  margin-left: -1px;
+}
+
+.admin-frontend-link:hover,
+.admin-frontend-link:focus-visible {
+  background: var(--accent);
+  transform: translateY(-1px);
+  box-shadow: 0 14px 28px rgba(7, 14, 11, 0.14);
 }
 
 .admin-tab-panel {
@@ -2115,6 +2139,25 @@ button {
   .calendar-card {
     padding: 18px;
     border-radius: 20px;
+  }
+
+  .admin-tabs {
+    width: 100%;
+  }
+
+  .admin-tab {
+    border-radius: 16px;
+    border-bottom: 1px solid var(--card-border);
+    margin-bottom: 0;
+  }
+
+  .admin-tab + .admin-tab {
+    margin-left: 0;
+  }
+
+  .admin-frontend-link {
+    border-radius: 16px;
+    margin-left: 0;
   }
 
   .daily-card {

@@ -40,10 +40,16 @@
           <a href="#" class="site-nav-link">About</a>
           <a href="#" class="site-nav-link">Contact</a>
         </nav>
-        <a href="html/login.html" class="calendar-nav site-header-login">
+        <button
+          type="button"
+          class="calendar-nav site-header-login"
+          data-login-open
+          aria-haspopup="dialog"
+          aria-controls="site-login-modal"
+        >
           <i class="fa-solid fa-user" aria-hidden="true"></i>
           <span>Sign In</span>
-        </a>
+        </button>
       </div>
       <div class="site-header-hero">
         <img
@@ -62,7 +68,7 @@
               Students to Book their favourite class!
             </p>
             <div class="site-hero-actions">
-              <a href="html/demo-booking.html" class="site-hero-button">Demo</a>
+              <a href="https://dashingwebdesigns.com" class="site-hero-button" target="_blank" rel="noopener noreferrer">Demo</a>
               <a href="html/booking.html" class="site-hero-button">Tour</a>
             </div>
           </div>
@@ -161,5 +167,119 @@
       <p class="site-footer-copy">&copy; Reserved Dope Bookings</p>
       <p class="site-footer-credit">Powered by Dashing Web Designs.</p>
     </footer>
+
+    <div
+      class="site-login-modal is-hidden"
+      id="site-login-modal"
+      data-login-modal
+      aria-hidden="true"
+    >
+      <div class="site-login-backdrop" data-login-close></div>
+      <section
+        class="site-login-dialog"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="site-login-title"
+      >
+        <button
+          type="button"
+          class="site-login-close"
+          aria-label="Close login modal"
+          data-login-close
+        >
+          <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+        </button>
+        <p class="site-login-eyebrow">Account Access</p>
+        <h2 class="site-login-title" id="site-login-title">Login</h2>
+        <p class="site-login-copy">
+          Sign in to continue to your dashboard or protected booking tools.
+        </p>
+
+        <form class="site-login-form">
+          <label class="site-login-field">
+            <span>Email</span>
+            <input
+              type="email"
+              name="email"
+              placeholder="name@example.com"
+              required
+            />
+          </label>
+
+          <label class="site-login-field">
+            <span>Password</span>
+            <input
+              type="password"
+              name="password"
+              placeholder="Enter your password"
+              required
+            />
+          </label>
+
+          <div class="site-login-actions">
+            <p class="site-login-status">Authentication is not wired up yet.</p>
+            <button type="submit" class="site-login-submit">Login</button>
+          </div>
+        </form>
+      </section>
+    </div>
+
+    <script>
+      const loginOpenButton = document.querySelector("[data-login-open]");
+      const loginModal = document.querySelector("[data-login-modal]");
+      const loginCloseButtons = document.querySelectorAll("[data-login-close]");
+      const loginDialog = loginModal?.querySelector(".site-login-dialog");
+      const loginForm = loginModal?.querySelector(".site-login-form");
+
+      const openLoginModal = () => {
+        if (!loginModal) {
+          return;
+        }
+
+        loginModal.classList.remove("is-hidden");
+        loginModal.setAttribute("aria-hidden", "false");
+        document.body.classList.add("has-modal-open");
+        window.setTimeout(() => {
+          loginModal.querySelector('input[name="email"]')?.focus();
+        }, 0);
+      };
+
+      const closeLoginModal = () => {
+        if (!loginModal) {
+          return;
+        }
+
+        loginModal.classList.add("is-hidden");
+        loginModal.setAttribute("aria-hidden", "true");
+        document.body.classList.remove("has-modal-open");
+        loginOpenButton?.focus();
+      };
+
+      loginOpenButton?.addEventListener("click", openLoginModal);
+
+      loginCloseButtons.forEach((button) => {
+        button.addEventListener("click", closeLoginModal);
+      });
+
+      loginModal?.addEventListener("click", (event) => {
+        if (event.target === loginModal) {
+          closeLoginModal();
+        }
+      });
+
+      loginDialog?.addEventListener("click", (event) => {
+        event.stopPropagation();
+      });
+
+      loginForm?.addEventListener("submit", (event) => {
+        event.preventDefault();
+      });
+
+      document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape" && loginModal && !loginModal.classList.contains("is-hidden")) {
+          closeLoginModal();
+        }
+      });
+    </script>
   </body>
 </html>

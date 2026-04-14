@@ -597,6 +597,9 @@ button {
 
 .public-actions {
   display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
   justify-content: flex-start;
   margin-bottom: 18px;
 }
@@ -623,6 +626,28 @@ button {
 .public-filter.is-active {
   background: var(--accent);
   color: var(--primary-fill-text);
+}
+
+.public-admin-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding: 10px 18px;
+  border-radius: 16px;
+  background: var(--accent-strong);
+  color: #f5fff2;
+  text-decoration: none;
+  font-weight: 800;
+  box-shadow: var(--shadow-sm);
+  transition: transform 180ms ease, box-shadow 180ms ease, background 180ms ease;
+}
+
+.public-admin-link:hover,
+.public-admin-link:focus-visible {
+  background: var(--accent);
+  transform: translateY(-1px);
+  box-shadow: 0 14px 28px rgba(7, 14, 11, 0.14);
 }
 
 .public-title {
@@ -2079,6 +2104,10 @@ button {
   }
 
   .public-filter {
+    width: 100%;
+  }
+
+  .public-admin-link {
     width: 100%;
   }
 

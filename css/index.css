@@ -28,6 +28,10 @@ body {
   background: var(--page-bg);
 }
 
+body.has-modal-open {
+  overflow: hidden;
+}
+
 button {
   font: inherit;
 }
@@ -417,6 +421,114 @@ button {
   line-height: 1.2;
 }
 
+.site-login-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+}
+
+.site-login-modal.is-hidden {
+  display: none;
+}
+
+.site-login-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(8, 14, 11, 0.54);
+  backdrop-filter: blur(10px);
+}
+
+.site-login-dialog {
+  position: relative;
+  z-index: 1;
+  width: min(460px, 100%);
+  padding: 32px;
+  border: 1px solid rgba(7, 14, 11, 0.1);
+  border-radius: 28px;
+  background: rgba(255, 255, 255, 0.98);
+  box-shadow: 0 28px 60px rgba(0, 0, 0, 0.2);
+}
+
+.site-login-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 42px;
+  height: 42px;
+  border: 0;
+  border-radius: 999px;
+  background: rgba(13, 18, 16, 0.06);
+  color: var(--text-main);
+  cursor: pointer;
+}
+
+.site-login-eyebrow {
+  margin: 0 0 8px;
+  color: var(--accent-strong);
+  font-size: 0.82rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.site-login-title {
+  margin: 0;
+  font-size: clamp(2rem, 4vw, 2.5rem);
+  line-height: 1.05;
+}
+
+.site-login-copy {
+  margin: 12px 0 0;
+  color: rgba(13, 18, 16, 0.68);
+  line-height: 1.5;
+}
+
+.site-login-form {
+  display: grid;
+  gap: 18px;
+  margin-top: 24px;
+}
+
+.site-login-field {
+  display: grid;
+  gap: 8px;
+  font-weight: 600;
+}
+
+.site-login-field input {
+  width: 100%;
+  padding: 14px 16px;
+  border: 1px solid rgba(7, 14, 11, 0.14);
+  border-radius: 14px;
+  background: #fff;
+  color: var(--text-main);
+}
+
+.site-login-actions {
+  display: grid;
+  gap: 14px;
+}
+
+.site-login-status {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 0.95rem;
+}
+
+.site-login-submit {
+  border: 0;
+  border-radius: 16px;
+  padding: 14px 18px;
+  background: linear-gradient(135deg, var(--accent), var(--accent-strong));
+  color: #fff;
+  font-weight: 800;
+  cursor: pointer;
+  box-shadow: var(--shadow-sm);
+}
+
 @media (max-width: 640px) {
   .site-header-inner {
     padding: 8px 16px;
@@ -518,5 +630,14 @@ button {
     padding: 12px 16px;
     flex-direction: column;
     text-align: center;
+  }
+
+  .site-login-modal {
+    padding: 16px;
+  }
+
+  .site-login-dialog {
+    padding: 24px 20px;
+    border-radius: 22px;
   }
 }
