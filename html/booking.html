@@ -1,0 +1,587 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Book A Class</title>
+    <link rel="icon" type="image/webp" href="../img/logo-green.webp" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../css/booking.css" />
+  </head>
+  <body>
+    <main class="public-shell">
+      <section class="public-layout" aria-label="Public booking calendar">
+        <div class="public-main">
+          <div class="public-actions">
+            <div
+              class="public-filter-group"
+              role="group"
+              aria-label="Booking type"
+            >
+              <button
+                type="button"
+                class="public-filter is-active"
+                data-booking-filter="all"
+              >
+                All
+              </button>
+              <button
+                type="button"
+                class="public-filter"
+                data-booking-filter="class"
+              >
+                Classes
+              </button>
+              <button
+                type="button"
+                class="public-filter"
+                data-booking-filter="event"
+              >
+                Events
+              </button>
+            </div>
+          </div>
+
+          <section
+            class="calendar-view-panel"
+            data-public-calendar-layout
+            aria-label="Monthly booking calendar"
+          >
+            <section class="calendar-card">
+              <header class="calendar-toolbar">
+                <div>
+                  <p class="calendar-eyebrow">Public Calendar</p>
+                  <h2 class="calendar-title public-title">Monthly Bookings</h2>
+                </div>
+                <div class="calendar-controls">
+                  <button
+                    type="button"
+                    class="calendar-nav"
+                    data-public-nav="prev"
+                    aria-label="Previous month"
+                  >
+                    Prev
+                  </button>
+                  <div
+                    class="calendar-month"
+                    data-public-month
+                    aria-live="polite"
+                  ></div>
+                  <button
+                    type="button"
+                    class="calendar-nav"
+                    data-public-nav="next"
+                    aria-label="Next month"
+                  >
+                    Next
+                  </button>
+                </div>
+              </header>
+
+              <div
+                class="calendar-card-controls calendar-card-controls--view-only"
+              >
+                <label class="calendar-view-picker">
+                  <span class="calendar-view-label">View</span>
+                  <select
+                    class="calendar-view-select"
+                    aria-label="Calendar view"
+                    data-public-view-select
+                  >
+                    <option value="daily">Daily View</option>
+                    <option value="weekly">Weekly View</option>
+                    <option value="monthly" selected>Monthly View</option>
+                  </select>
+                </label>
+              </div>
+
+              <div class="calendar-weekdays" aria-hidden="true">
+                <span>Sun</span>
+                <span>Mon</span>
+                <span>Tue</span>
+                <span>Wed</span>
+                <span>Thu</span>
+                <span>Fri</span>
+                <span>Sat</span>
+              </div>
+
+              <div
+                class="calendar-grid public-calendar-grid"
+                data-public-calendar-grid
+              ></div>
+            </section>
+          </section>
+
+          <section
+            class="calendar-view-panel daily-layout is-hidden"
+            data-public-daily-layout
+            aria-label="Daily booking calendar"
+          >
+            <div class="daily-card">
+              <header class="daily-toolbar">
+                <div>
+                  <p class="calendar-eyebrow">Public Calendar</p>
+                  <h2 class="calendar-title public-title">Daily Bookings</h2>
+                </div>
+                <div class="calendar-controls">
+                  <button
+                    type="button"
+                    class="calendar-nav"
+                    data-public-daily-nav="prev"
+                    aria-label="Previous day"
+                  >
+                    Prev
+                  </button>
+                  <div
+                    class="calendar-month"
+                    data-public-daily-label
+                    aria-live="polite"
+                  ></div>
+                  <button
+                    type="button"
+                    class="calendar-nav"
+                    data-public-daily-nav="next"
+                    aria-label="Next day"
+                  >
+                    Next
+                  </button>
+                </div>
+              </header>
+
+              <div
+                class="calendar-card-controls calendar-card-controls--view-only"
+              >
+                <label class="calendar-view-picker">
+                  <span class="calendar-view-label">View</span>
+                  <select
+                    class="calendar-view-select"
+                    aria-label="Calendar view"
+                    data-public-view-select
+                  >
+                    <option value="daily" selected>Daily View</option>
+                    <option value="weekly">Weekly View</option>
+                    <option value="monthly">Monthly View</option>
+                  </select>
+                </label>
+              </div>
+
+              <div class="daily-grid" data-public-daily-grid></div>
+            </div>
+          </section>
+
+          <section
+            class="calendar-view-panel weekly-layout is-hidden"
+            data-public-weekly-layout
+            aria-label="Weekly booking calendar"
+          >
+            <div class="weekly-card">
+              <header class="weekly-toolbar">
+                <div>
+                  <p class="calendar-eyebrow">Public Calendar</p>
+                  <h2 class="calendar-title public-title">Weekly Bookings</h2>
+                </div>
+                <div class="calendar-controls">
+                  <button
+                    type="button"
+                    class="calendar-nav"
+                    data-public-weekly-nav="prev"
+                    aria-label="Previous week"
+                  >
+                    Prev
+                  </button>
+                  <div
+                    class="calendar-month"
+                    data-public-weekly-label
+                    aria-live="polite"
+                  ></div>
+                  <button
+                    type="button"
+                    class="calendar-nav"
+                    data-public-weekly-nav="next"
+                    aria-label="Next week"
+                  >
+                    Next
+                  </button>
+                </div>
+              </header>
+
+              <div
+                class="calendar-card-controls calendar-card-controls--view-only"
+              >
+                <label class="calendar-view-picker">
+                  <span class="calendar-view-label">View</span>
+                  <select
+                    class="calendar-view-select"
+                    aria-label="Calendar view"
+                    data-public-view-select
+                  >
+                    <option value="daily">Daily View</option>
+                    <option value="weekly" selected>Weekly View</option>
+                    <option value="monthly">Monthly View</option>
+                  </select>
+                </label>
+              </div>
+
+              <div class="weekly-board">
+                <div class="weekly-times" data-public-weekly-times></div>
+                <div class="weekly-columns-wrap">
+                  <div class="weekly-columns" data-public-weekly-columns></div>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+
+        <aside class="public-sidebar">
+          <section class="mini-calendar-card public-summary-card">
+            <p class="calendar-eyebrow">Selected Date</p>
+            <h2 class="public-summary-title" data-selected-date-label>
+              Select a date
+            </h2>
+            <p
+              class="daily-event-empty public-summary-copy"
+              data-selected-date-copy
+            >
+              Choose a highlighted day to view available classes and events.
+            </p>
+          </section>
+
+          <section class="mini-calendar-card public-session-card">
+            <div class="public-session-header">
+              <p class="calendar-eyebrow">Available Sessions</p>
+              <span class="public-session-count" data-public-session-count
+                >0</span
+              >
+            </div>
+            <div class="public-session-list" data-public-session-list></div>
+          </section>
+
+          <section class="mini-calendar-card public-booking-card">
+            <p class="calendar-eyebrow">Reservation</p>
+            <h2 class="public-booking-title" data-public-booking-title>
+              No session selected
+            </h2>
+            <form class="public-booking-form" data-public-booking-form>
+              <label class="public-field">
+                <span>Name</span>
+                <input
+                  type="text"
+                  name="name"
+                  placeholder="Your name"
+                  required
+                />
+              </label>
+              <label class="public-field">
+                <span>Email</span>
+                <input
+                  type="email"
+                  name="email"
+                  placeholder="name@example.com"
+                  required
+                />
+              </label>
+              <label class="public-field">
+                <span>Notes</span>
+                <textarea
+                  name="notes"
+                  rows="3"
+                  placeholder="Anything we should know?"
+                ></textarea>
+              </label>
+              <button type="submit" class="calendar-create">Book Now</button>
+              <p
+                class="public-form-status"
+                data-public-form-status
+                aria-live="polite"
+              ></p>
+            </form>
+            <button
+              type="button"
+              class="text-link-button public-refund-link"
+              data-refund-policy-open
+            >
+              Refund Policy
+            </button>
+          </section>
+        </aside>
+      </section>
+    </main>
+
+    <div class="admin-modal is-hidden" data-public-modal aria-hidden="true">
+      <div class="admin-modal-backdrop" data-public-modal-close></div>
+      <section
+        class="admin-modal-dialog public-modal-dialog"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="public-modal-title"
+      >
+        <header class="admin-modal-header">
+          <div>
+            <p class="calendar-eyebrow">Session Details</p>
+            <h2
+              class="admin-modal-title"
+              id="public-modal-title"
+              data-public-modal-title
+            >
+              Event Details
+            </h2>
+          </div>
+          <button
+            type="button"
+            class="admin-modal-close"
+            aria-label="Close session details"
+            data-public-modal-close
+          >
+            X
+          </button>
+        </header>
+
+        <div class="public-modal-content" data-public-modal-content></div>
+
+        <div class="admin-form-actions">
+          <p class="admin-form-status">
+            Review the session details, then book from the reservation panel.
+          </p>
+          <div class="admin-form-buttons">
+            <button type="button" class="calendar-nav" data-public-modal-close>
+              Close
+            </button>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <div class="admin-modal is-hidden" data-refund-modal aria-hidden="true">
+      <div class="admin-modal-backdrop" data-refund-modal-close></div>
+      <section
+        class="admin-modal-dialog public-modal-dialog"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="refund-modal-title"
+      >
+        <header class="admin-modal-header">
+          <div>
+            <p class="calendar-eyebrow">Payments</p>
+            <h2
+              class="admin-modal-title"
+              id="refund-modal-title"
+              data-refund-modal-title
+            >
+              Refund Policy
+            </h2>
+          </div>
+          <button
+            type="button"
+            class="admin-modal-close"
+            aria-label="Close refund policy"
+            data-refund-modal-close
+          >
+            X
+          </button>
+        </header>
+
+        <div class="public-modal-content" data-refund-modal-content></div>
+
+        <div class="admin-form-actions">
+          <p class="admin-form-status">
+            Review the refund terms before booking.
+          </p>
+          <div class="admin-form-buttons">
+            <button type="button" class="calendar-nav" data-refund-modal-close>
+              Close
+            </button>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <div class="admin-modal is-hidden" data-payment-modal aria-hidden="true">
+      <div class="admin-modal-backdrop" data-payment-modal-close></div>
+      <section
+        class="admin-modal-dialog public-modal-dialog"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="payment-modal-title"
+      >
+        <header class="admin-modal-header">
+          <div>
+            <p class="calendar-eyebrow">Checkout</p>
+            <h2
+              class="admin-modal-title"
+              id="payment-modal-title"
+              data-payment-modal-title
+            >
+              Choose Payment Method
+            </h2>
+          </div>
+          <button
+            type="button"
+            class="admin-modal-close"
+            aria-label="Close payment options"
+            data-payment-modal-close
+          >
+            X
+          </button>
+        </header>
+
+        <div class="public-modal-content" data-payment-modal-content></div>
+
+        <div class="admin-form-actions">
+          <p class="admin-form-status" data-payment-modal-status>
+            Select how you want to continue your booking.
+          </p>
+          <div class="admin-form-buttons">
+            <button type="button" class="calendar-nav" data-payment-modal-close>
+              Cancel
+            </button>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <div class="admin-modal is-hidden" data-card-modal aria-hidden="true">
+      <div class="admin-modal-backdrop" data-card-modal-close></div>
+      <section
+        class="admin-modal-dialog public-modal-dialog"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="card-modal-title"
+      >
+        <header class="admin-modal-header">
+          <div>
+            <p class="calendar-eyebrow">Checkout</p>
+            <h2
+              class="admin-modal-title"
+              id="card-modal-title"
+              data-card-modal-title
+            >
+              Credit Card Payment
+            </h2>
+          </div>
+          <button
+            type="button"
+            class="admin-modal-close"
+            aria-label="Close card payment"
+            data-card-modal-close
+          >
+            X
+          </button>
+        </header>
+
+        <div class="public-modal-content">
+          <form
+            class="public-booking-form fake-card-form"
+            data-card-payment-form
+          >
+            <label class="public-field">
+              <span>Card Number</span>
+              <input
+                type="text"
+                name="card_number"
+                placeholder="4242 4242 4242 4242"
+                required
+              />
+            </label>
+            <div class="fake-card-grid">
+              <label class="public-field">
+                <span>Expiry</span>
+                <input
+                  type="text"
+                  name="card_expiry"
+                  placeholder="12/34"
+                  required
+                />
+              </label>
+              <label class="public-field">
+                <span>CVC</span>
+                <input type="text" name="card_cvc" placeholder="123" required />
+              </label>
+            </div>
+            <label class="public-field">
+              <span>Name On Card</span>
+              <input
+                type="text"
+                name="card_name"
+                placeholder="Jane Doe"
+                required
+              />
+            </label>
+            <p
+              class="public-form-status"
+              data-card-modal-status
+              aria-live="polite"
+            >
+              Demo card form only. No real payment is processed.
+            </p>
+            <div class="admin-form-buttons">
+              <button type="button" class="calendar-nav" data-card-modal-back>
+                Back
+              </button>
+              <button type="submit" class="calendar-create">Pay Now</button>
+            </div>
+          </form>
+        </div>
+      </section>
+    </div>
+
+    <div
+      class="admin-modal is-hidden"
+      data-onsite-code-modal
+      aria-hidden="true"
+    >
+      <div class="admin-modal-backdrop" data-onsite-code-modal-close></div>
+      <section
+        class="admin-modal-dialog public-modal-dialog"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="onsite-code-modal-title"
+      >
+        <header class="admin-modal-header">
+          <div>
+            <p class="calendar-eyebrow">Pay On-Site</p>
+            <h2
+              class="admin-modal-title"
+              id="onsite-code-modal-title"
+              data-onsite-code-modal-title
+            >
+              Your Check-In Code
+            </h2>
+          </div>
+          <button
+            type="button"
+            class="admin-modal-close"
+            aria-label="Close on-site code"
+            data-onsite-code-modal-close
+          >
+            X
+          </button>
+        </header>
+
+        <div class="public-modal-content" data-onsite-code-modal-content></div>
+
+        <div class="admin-form-actions">
+          <p class="admin-form-status">
+            Bring this code to your class or event for staff check-in.
+          </p>
+          <div class="admin-form-buttons">
+            <button
+              type="button"
+              class="calendar-nav"
+              data-onsite-code-modal-close
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <script src="../js/shared-schedule.js"></script>
+    <script src="../js/public-booking.js"></script>
+  </body>
+</html>

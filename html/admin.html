@@ -1,0 +1,1688 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Calendar</title>
+    <link rel="icon" type="image/webp" href="../img/logo-green.webp" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../css/admin.css" />
+  </head>
+  <body>
+    <main class="calendar-shell">
+      <section class="admin-tabs-shell">
+        <div class="admin-tabs" role="tablist" aria-label="Admin sections">
+          <button
+            type="button"
+            class="admin-tab is-active"
+            role="tab"
+            aria-selected="true"
+            data-admin-tab-trigger="bookings"
+          >
+            Bookings
+          </button>
+          <button
+            type="button"
+            class="admin-tab"
+            role="tab"
+            aria-selected="false"
+            data-admin-tab-trigger="classes"
+          >
+            Classes
+          </button>
+          <button
+            type="button"
+            class="admin-tab"
+            role="tab"
+            aria-selected="false"
+            data-admin-tab-trigger="events"
+          >
+            Events
+          </button>
+          <button
+            type="button"
+            class="admin-tab"
+            role="tab"
+            aria-selected="false"
+            data-admin-tab-trigger="customers"
+          >
+            Customers
+          </button>
+          <button
+            type="button"
+            class="admin-tab"
+            role="tab"
+            aria-selected="false"
+            data-admin-tab-trigger="business"
+          >
+            Settings
+          </button>
+        </div>
+
+        <section class="admin-tab-panel" data-admin-tab-panel="bookings">
+          <div class="calendar-layout">
+            <div class="calendar-main">
+              <section
+                class="calendar-view-panel"
+                data-calendar-layout
+                aria-label="Monthly booking calendar"
+              >
+                <section class="calendar-card">
+                  <header class="calendar-toolbar">
+                    <div>
+                      <p class="calendar-eyebrow">Booking System</p>
+                      <h1 class="calendar-title">Monthly Calendar</h1>
+                    </div>
+                    <div class="calendar-controls">
+                      <button
+                        type="button"
+                        class="calendar-nav"
+                        data-calendar-nav="prev"
+                        aria-label="Previous month"
+                      >
+                        Prev
+                      </button>
+                      <div
+                        class="calendar-month"
+                        data-calendar-month
+                        aria-live="polite"
+                      ></div>
+                      <button
+                        type="button"
+                        class="calendar-nav"
+                        data-calendar-nav="next"
+                        aria-label="Next month"
+                      >
+                        Next
+                      </button>
+                    </div>
+                  </header>
+
+                  <div class="calendar-card-controls">
+                    <label class="calendar-view-picker">
+                      <span class="calendar-view-label">View</span>
+                      <select
+                        class="calendar-view-select"
+                        aria-label="Calendar view"
+                        data-calendar-view-select
+                      >
+                        <option value="daily">Daily View</option>
+                        <option value="weekly">Weekly View</option>
+                        <option value="monthly" selected>Monthly View</option>
+                      </select>
+                    </label>
+                    <button type="button" class="calendar-create">
+                      Create
+                    </button>
+                  </div>
+
+                  <div class="calendar-weekdays" aria-hidden="true">
+                    <span>Sun</span>
+                    <span>Mon</span>
+                    <span>Tue</span>
+                    <span>Wed</span>
+                    <span>Thu</span>
+                    <span>Fri</span>
+                    <span>Sat</span>
+                  </div>
+
+                  <div class="calendar-grid" data-calendar-grid></div>
+                </section>
+              </section>
+
+              <section
+                class="calendar-view-panel daily-layout is-hidden"
+                data-daily-layout
+                aria-label="Daily booking calendar"
+              >
+                <div class="daily-card">
+                  <header class="daily-toolbar">
+                    <div>
+                      <p class="calendar-eyebrow">Booking System</p>
+                      <h1 class="calendar-title">Daily Calendar</h1>
+                    </div>
+                    <div class="calendar-controls">
+                      <button
+                        type="button"
+                        class="calendar-nav"
+                        data-daily-nav="prev"
+                        aria-label="Previous day"
+                      >
+                        Prev
+                      </button>
+                      <div
+                        class="calendar-month"
+                        data-daily-label
+                        aria-live="polite"
+                      ></div>
+                      <button
+                        type="button"
+                        class="calendar-nav"
+                        data-daily-nav="next"
+                        aria-label="Next day"
+                      >
+                        Next
+                      </button>
+                    </div>
+                  </header>
+
+                  <div
+                    class="calendar-card-controls calendar-card-controls--view-only"
+                  >
+                    <label class="calendar-view-picker">
+                      <span class="calendar-view-label">View</span>
+                      <select
+                        class="calendar-view-select"
+                        aria-label="Calendar view"
+                        data-calendar-view-select
+                      >
+                        <option value="daily" selected>Daily View</option>
+                        <option value="weekly">Weekly View</option>
+                        <option value="monthly">Monthly View</option>
+                      </select>
+                    </label>
+                  </div>
+
+                  <div class="daily-grid" data-daily-grid></div>
+                </div>
+              </section>
+
+              <section
+                class="calendar-view-panel weekly-layout is-hidden"
+                data-weekly-layout
+                aria-label="Weekly booking calendar"
+              >
+                <div class="weekly-card">
+                  <header class="weekly-toolbar">
+                    <div>
+                      <p class="calendar-eyebrow">Booking System</p>
+                      <h1 class="calendar-title">Weekly Calendar</h1>
+                    </div>
+                    <div class="calendar-controls">
+                      <button
+                        type="button"
+                        class="calendar-nav"
+                        data-weekly-nav="prev"
+                        aria-label="Previous week"
+                      >
+                        Prev
+                      </button>
+                      <div
+                        class="calendar-month"
+                        data-weekly-label
+                        aria-live="polite"
+                      ></div>
+                      <button
+                        type="button"
+                        class="calendar-nav"
+                        data-weekly-nav="next"
+                        aria-label="Next week"
+                      >
+                        Next
+                      </button>
+                    </div>
+                  </header>
+
+                  <div
+                    class="calendar-card-controls calendar-card-controls--view-only"
+                  >
+                    <label class="calendar-view-picker">
+                      <span class="calendar-view-label">View</span>
+                      <select
+                        class="calendar-view-select"
+                        aria-label="Calendar view"
+                        data-calendar-view-select
+                      >
+                        <option value="daily">Daily View</option>
+                        <option value="weekly" selected>Weekly View</option>
+                        <option value="monthly">Monthly View</option>
+                      </select>
+                    </label>
+                  </div>
+
+                  <div class="weekly-board">
+                    <div class="weekly-times" data-weekly-times></div>
+                    <div class="weekly-columns-wrap">
+                      <div class="weekly-columns" data-weekly-columns></div>
+                    </div>
+                  </div>
+                </div>
+              </section>
+            </div>
+
+            <aside
+              class="mini-calendar-card"
+              aria-label="Mini monthly calendar"
+            >
+              <div class="mini-calendar-header">
+                <button
+                  type="button"
+                  class="mini-calendar-nav"
+                  data-calendar-nav="prev"
+                  aria-label="Previous month"
+                >
+                  &#8249;
+                </button>
+                <div
+                  class="mini-calendar-month"
+                  data-mini-calendar-month
+                  aria-live="polite"
+                ></div>
+                <button
+                  type="button"
+                  class="mini-calendar-nav"
+                  data-calendar-nav="next"
+                  aria-label="Next month"
+                >
+                  &#8250;
+                </button>
+              </div>
+
+              <div class="mini-calendar-weekdays" aria-hidden="true">
+                <span>Sun</span>
+                <span>Mon</span>
+                <span>Tue</span>
+                <span>Wed</span>
+                <span>Thu</span>
+                <span>Fri</span>
+                <span>Sat</span>
+              </div>
+
+              <div class="mini-calendar-grid" data-mini-calendar-grid></div>
+            </aside>
+          </div>
+        </section>
+
+        <section
+          class="admin-tab-panel is-hidden"
+          data-admin-tab-panel="business"
+        >
+          <section class="calendar-card">
+            <p class="calendar-eyebrow">Settings</p>
+            <h2 class="calendar-title">Settings</h2>
+
+            <div
+              class="settings-tabs"
+              role="tablist"
+              aria-label="Settings sections"
+            >
+              <button
+                type="button"
+                class="settings-tab is-active"
+                role="tab"
+                aria-selected="true"
+                data-settings-tab-trigger="profile"
+              >
+                Profile
+              </button>
+              <button
+                type="button"
+                class="settings-tab"
+                role="tab"
+                aria-selected="false"
+                data-settings-tab-trigger="branding"
+              >
+                Branding
+              </button>
+              <button
+                type="button"
+                class="settings-tab"
+                role="tab"
+                aria-selected="false"
+                data-settings-tab-trigger="capacity"
+              >
+                Capacity
+              </button>
+              <button
+                type="button"
+                class="settings-tab"
+                role="tab"
+                aria-selected="false"
+                data-settings-tab-trigger="payments"
+              >
+                Payments
+              </button>
+              <button
+                type="button"
+                class="settings-tab"
+                role="tab"
+                aria-selected="false"
+                data-settings-tab-trigger="notifications"
+              >
+                Notifications
+              </button>
+            </div>
+
+            <section
+              class="settings-tab-panel"
+              data-settings-tab-panel="profile"
+            >
+              <form class="admin-form">
+                <div class="admin-form-grid">
+                  <label class="admin-field admin-field-wide">
+                    <span>Business Name</span>
+                    <input
+                      type="text"
+                      name="business_name"
+                      placeholder="Your studio or business name"
+                    />
+                  </label>
+
+                  <label class="admin-field admin-field-wide">
+                    <span>Logo</span>
+                    <input type="file" name="business_logo" accept="image/*" />
+                  </label>
+
+                  <label class="admin-field admin-field-wide">
+                    <span>Contact Details</span>
+                    <textarea
+                      name="business_contact_details"
+                      rows="3"
+                      placeholder="Studio address, contact person, social links, or other public-facing details"
+                    ></textarea>
+                  </label>
+
+                  <label class="admin-field">
+                    <span>Support Email</span>
+                    <input
+                      type="email"
+                      name="support_email"
+                      placeholder="support@yourbusiness.com"
+                    />
+                  </label>
+
+                  <label class="admin-field">
+                    <span>Phone</span>
+                    <input
+                      type="tel"
+                      name="business_phone"
+                      placeholder="+64 21 000 0000"
+                    />
+                  </label>
+                </div>
+              </form>
+            </section>
+
+            <section
+              class="settings-tab-panel is-hidden"
+              data-settings-tab-panel="branding"
+            >
+              <div class="branding-grid">
+                <article class="branding-card">
+                  <p class="calendar-eyebrow">Custom Colors</p>
+                  <h3 class="branding-title">Color Palette</h3>
+                  <div class="branding-swatches">
+                    <label class="branding-swatch">
+                      <span>Primary</span>
+                      <input
+                        type="color"
+                        value="#49d10f"
+                        data-branding-color="primary"
+                      />
+                    </label>
+                    <label class="branding-swatch">
+                      <span>Text on Primary</span>
+                      <input
+                        type="color"
+                        value="#ffffff"
+                        data-branding-color="primaryText"
+                      />
+                    </label>
+                    <label class="branding-swatch">
+                      <span>Accent</span>
+                      <input
+                        type="color"
+                        value="#0b130a"
+                        data-branding-color="accent"
+                      />
+                    </label>
+                    <label class="branding-swatch">
+                      <span>Surface</span>
+                      <input
+                        type="color"
+                        value="#ffffff"
+                        data-branding-color="surface"
+                      />
+                    </label>
+                  </div>
+                  <div class="branding-actions">
+                    <button
+                      type="button"
+                      class="calendar-nav"
+                      data-branding-default
+                    >
+                      Default
+                    </button>
+                    <button
+                      type="button"
+                      class="calendar-create"
+                      data-branding-save
+                    >
+                      Save
+                    </button>
+                  </div>
+                  <p
+                    class="branding-status"
+                    data-branding-status
+                    aria-live="polite"
+                  ></p>
+                </article>
+
+                <article class="branding-card">
+                  <p class="calendar-eyebrow">Button Style</p>
+                  <h3 class="branding-title">CTA Appearance</h3>
+                  <div class="branding-options">
+                    <label class="branding-option">
+                      <input
+                        type="radio"
+                        name="button_style"
+                        value="solid"
+                        checked
+                        data-branding-button-style
+                      />
+                      <span>Solid</span>
+                    </label>
+                    <label class="branding-option">
+                      <input
+                        type="radio"
+                        name="button_style"
+                        value="outline"
+                        data-branding-button-style
+                      />
+                      <span>Outline</span>
+                    </label>
+                    <label class="branding-option">
+                      <input
+                        type="radio"
+                        name="button_style"
+                        value="soft-shadow"
+                        data-branding-button-style
+                      />
+                      <span>Soft Shadow</span>
+                    </label>
+                  </div>
+                  <div class="branding-preview-row">
+                    <button type="button" class="calendar-create">
+                      Preview Button
+                    </button>
+                  </div>
+                </article>
+
+                <article class="branding-card branding-card-wide">
+                  <p class="calendar-eyebrow">Booking Page Theme</p>
+                  <h3 class="branding-title">Theme Direction</h3>
+                  <div class="branding-theme-grid">
+                    <label class="branding-theme-option is-active">
+                      <input
+                        type="radio"
+                        name="booking_theme"
+                        value="clean-light"
+                        checked
+                        data-branding-theme
+                      />
+                      <span>Clean Light</span>
+                    </label>
+                    <label class="branding-theme-option">
+                      <input
+                        type="radio"
+                        name="booking_theme"
+                        value="bold-contrast"
+                        data-branding-theme
+                      />
+                      <span>Bold Contrast</span>
+                    </label>
+                    <label class="branding-theme-option">
+                      <input
+                        type="radio"
+                        name="booking_theme"
+                        value="minimal-studio"
+                        data-branding-theme
+                      />
+                      <span>Minimal Studio</span>
+                    </label>
+                  </div>
+                </article>
+              </div>
+            </section>
+
+            <section
+              class="settings-tab-panel is-hidden"
+              data-settings-tab-panel="capacity"
+            >
+              <div class="branding-grid">
+                <article class="branding-card">
+                  <p class="calendar-eyebrow">Capacity Rules</p>
+                  <h3 class="branding-title">How It Works</h3>
+                  <div class="branding-options">
+                    <div class="branding-option">
+                      <span
+                        >Confirmed bookings fill the main capacity first.</span
+                      >
+                    </div>
+                    <div class="branding-option">
+                      <span
+                        >Overbooking opens only after confirmed spots are
+                        full.</span
+                      >
+                    </div>
+                    <div class="branding-option">
+                      <span
+                        >Waitlist starts after confirmed and overbooking spots
+                        are exhausted.</span
+                      >
+                    </div>
+                    <div class="branding-option">
+                      <span
+                        >Auto-close blocks new bookings when no configured spots
+                        remain.</span
+                      >
+                    </div>
+                  </div>
+                </article>
+
+                <article class="branding-card">
+                  <p class="calendar-eyebrow">Where To Set It</p>
+                  <h3 class="branding-title">Session Controls</h3>
+                  <div class="branding-options">
+                    <div class="branding-option">
+                      <span
+                        >Create or edit a class/event to set waitlist,
+                        overbooking, and auto-close rules.</span
+                      >
+                    </div>
+                    <div class="branding-option">
+                      <span>Each session keeps its own capacity settings.</span>
+                    </div>
+                    <div class="branding-option">
+                      <span
+                        >Attendee lists show confirmed, overbooked, and
+                        waitlisted statuses.</span
+                      >
+                    </div>
+                  </div>
+                </article>
+              </div>
+            </section>
+
+            <section
+              class="settings-tab-panel is-hidden"
+              data-settings-tab-panel="payments"
+            >
+              <div data-payments-panel>
+                <div class="branding-grid">
+                  <article class="branding-card">
+                    <p class="calendar-eyebrow">Payments</p>
+                    <h3 class="branding-title">Payment Providers</h3>
+                    <form class="admin-form">
+                      <div class="admin-form-grid">
+                        <label class="admin-field admin-field-wide">
+                          <span>Stripe Publishable Key</span>
+                          <input
+                            type="text"
+                            name="stripe_publishable_key"
+                            placeholder="pk_live_... or pk_test_..."
+                            autocomplete="off"
+                          />
+                        </label>
+
+                        <label class="admin-field admin-field-wide">
+                          <span>Stripe Secret Key</span>
+                          <input
+                            type="password"
+                            name="stripe_secret_key"
+                            placeholder="sk_live_... or sk_test_..."
+                            autocomplete="off"
+                          />
+                        </label>
+
+                        <label class="admin-field admin-field-wide">
+                          <span>Stripe Webhook Secret</span>
+                          <input
+                            type="password"
+                            name="stripe_webhook_secret"
+                            placeholder="whsec_..."
+                            autocomplete="off"
+                          />
+                        </label>
+
+                        <label class="admin-field admin-field-wide">
+                          <span>Public Payment Notes</span>
+                          <textarea
+                            name="payment_public_notes"
+                            rows="3"
+                            placeholder="Accepted cards, payment instructions, or invoice notes shown to customers"
+                          ></textarea>
+                        </label>
+                      </div>
+                    </form>
+                  </article>
+
+                  <article class="branding-card">
+                    <p class="calendar-eyebrow">Checkout Rules</p>
+                    <h3 class="branding-title">Deposits And Full Payment</h3>
+                    <form class="admin-form">
+                      <div class="admin-form-grid">
+                        <div class="admin-field admin-field-wide">
+                          <span>Stripe Fee</span>
+                          <div class="branding-option">
+                            <span
+                              >Stripe takes 2.6% per transaction. Add a
+                              surcharge below if you want to recover part or all
+                              of that fee.</span
+                            >
+                          </div>
+                        </div>
+
+                        <label class="admin-capacity-toggle">
+                          <input
+                            type="checkbox"
+                            name="payments_require_full_payment"
+                          />
+                          <span>Pay Full Now</span>
+                        </label>
+
+                        <label class="admin-capacity-toggle">
+                          <input
+                            type="checkbox"
+                            name="payments_allow_pay_onsite"
+                          />
+                          <span>Pay on-site allowed</span>
+                        </label>
+
+                        <label class="admin-field">
+                          <span>Surcharge Per Transaction</span>
+                          <input
+                            type="text"
+                            name="transaction_surcharge"
+                            inputmode="decimal"
+                            placeholder="2.6% or $1.50"
+                          />
+                        </label>
+
+                        <label class="admin-field admin-field-wide">
+                          <span>Payment Due Notes</span>
+                          <textarea
+                            name="payment_due_notes"
+                            rows="2"
+                            placeholder="Balance due on arrival, due 24 hours before start, or invoice timing"
+                          ></textarea>
+                        </label>
+                      </div>
+                    </form>
+                  </article>
+
+                  <article class="branding-card branding-card-wide">
+                    <p class="calendar-eyebrow">Refund Rules</p>
+                    <h3 class="branding-title">
+                      Refund And Cancellation Policy
+                    </h3>
+                    <form class="admin-form">
+                      <div class="admin-form-grid">
+                        <label class="admin-field">
+                          <span>Refund Rule</span>
+                          <select name="refund_rule">
+                            <option value="no-refunds">No refunds</option>
+                            <option value="full-before-window">
+                              Full refund before cutoff
+                            </option>
+                            <option value="partial-before-window">
+                              Partial refund before cutoff
+                            </option>
+                            <option value="credit-only">
+                              Studio credit only
+                            </option>
+                          </select>
+                        </label>
+
+                        <label class="admin-field">
+                          <span>Refund Cutoff</span>
+                          <input
+                            type="text"
+                            name="refund_cutoff"
+                            placeholder="24 hours before start"
+                          />
+                        </label>
+
+                        <label class="admin-field">
+                          <span>Refund Amount</span>
+                          <input
+                            type="text"
+                            name="refund_amount"
+                            inputmode="decimal"
+                            placeholder="100% or $0.00"
+                          />
+                        </label>
+
+                        <label class="admin-capacity-toggle">
+                          <input
+                            type="checkbox"
+                            name="refund_deposit_nonrefundable"
+                            checked
+                          />
+                          <span>Deposit is non-refundable</span>
+                        </label>
+
+                        <label class="admin-field admin-field-wide">
+                          <span>Refund Policy Copy</span>
+                          <textarea
+                            name="refund_policy_copy"
+                            rows="3"
+                            placeholder="Write the customer-facing refund and cancellation policy shown at checkout"
+                          ></textarea>
+                        </label>
+                      </div>
+                    </form>
+                  </article>
+                </div>
+                <div class="branding-actions">
+                  <button
+                    type="button"
+                    class="calendar-nav"
+                    data-payments-default
+                  >
+                    Default
+                  </button>
+                  <button
+                    type="button"
+                    class="calendar-create"
+                    data-payments-save
+                  >
+                    Save
+                  </button>
+                </div>
+                <p
+                  class="branding-status"
+                  data-payments-status
+                  aria-live="polite"
+                ></p>
+              </div>
+            </section>
+
+            <section
+              class="settings-tab-panel is-hidden"
+              data-settings-tab-panel="notifications"
+            >
+              <div class="branding-grid">
+                <article class="branding-card">
+                  <p class="calendar-eyebrow">Notifications</p>
+                  <h3 class="branding-title">Core Notification Settings</h3>
+                  <form class="admin-form">
+                    <div class="admin-form-grid">
+                      <label class="admin-capacity-toggle">
+                        <input
+                          type="checkbox"
+                          name="notifications_customer_emails"
+                        />
+                        <span>Enable customer emails</span>
+                      </label>
+
+                      <label class="admin-capacity-toggle">
+                        <input
+                          type="checkbox"
+                          name="notifications_admin_emails"
+                        />
+                        <span>Enable admin emails</span>
+                      </label>
+
+                      <label class="admin-field">
+                        <span>Admin Notification Email</span>
+                        <input
+                          type="email"
+                          name="notifications_admin_email"
+                          placeholder="owner@business.com"
+                        />
+                      </label>
+
+                      <label class="admin-field">
+                        <span>Reply-To Email</span>
+                        <input
+                          type="email"
+                          name="notifications_reply_to"
+                          placeholder="hello@business.com"
+                        />
+                      </label>
+
+                      <label class="admin-field">
+                        <span>From Name</span>
+                        <input
+                          type="text"
+                          name="notifications_from_name"
+                          placeholder="Studio Name"
+                        />
+                      </label>
+
+                      <label class="admin-field">
+                        <span>From Email</span>
+                        <input
+                          type="email"
+                          name="notifications_from_email"
+                          placeholder="noreply@business.com"
+                        />
+                      </label>
+                    </div>
+                  </form>
+                </article>
+
+                <article class="branding-card">
+                  <p class="calendar-eyebrow">Triggers</p>
+                  <h3 class="branding-title">Important Event Emails</h3>
+                  <form class="admin-form">
+                    <div class="admin-form-grid">
+                      <label class="admin-capacity-toggle">
+                        <input
+                          type="checkbox"
+                          name="notifications_booking_confirmation"
+                        />
+                        <span>Booking confirmation</span>
+                      </label>
+
+                      <label class="admin-capacity-toggle">
+                        <input
+                          type="checkbox"
+                          name="notifications_booking_cancellation"
+                        />
+                        <span>Booking cancellation</span>
+                      </label>
+
+                      <label class="admin-capacity-toggle">
+                        <input
+                          type="checkbox"
+                          name="notifications_booking_reminder"
+                        />
+                        <span>Booking reminder</span>
+                      </label>
+
+                      <label class="admin-capacity-toggle">
+                        <input type="checkbox" name="notifications_waitlist" />
+                        <span>Waitlist / promotion</span>
+                      </label>
+
+                      <label class="admin-capacity-toggle">
+                        <input
+                          type="checkbox"
+                          name="notifications_pay_onsite"
+                        />
+                        <span>Pay on-site confirmation</span>
+                      </label>
+
+                      <label class="admin-capacity-toggle">
+                        <input
+                          type="checkbox"
+                          name="notifications_admin_alerts"
+                        />
+                        <span>Admin alerts for new bookings</span>
+                      </label>
+                    </div>
+                  </form>
+                </article>
+
+                <article class="branding-card branding-card-wide">
+                  <p class="calendar-eyebrow">Templates</p>
+                  <h3 class="branding-title">
+                    Reminder Timing And Message Content
+                  </h3>
+                  <form class="admin-form">
+                    <div class="admin-form-grid">
+                      <label class="admin-field">
+                        <span>Reminder Timing</span>
+                        <input
+                          type="text"
+                          name="notifications_reminder_timing"
+                          placeholder="24 hours before start"
+                        />
+                      </label>
+
+                      <label class="admin-field">
+                        <span>Secondary Reminder</span>
+                        <input
+                          type="text"
+                          name="notifications_secondary_reminder"
+                          placeholder="2 hours before start"
+                        />
+                      </label>
+
+                      <label class="admin-field admin-field-wide">
+                        <span>Customer Confirmation Template</span>
+                        <textarea
+                          name="notifications_customer_template"
+                          rows="3"
+                          placeholder="Hi {name}, your booking for {session_title} on {session_date} at {session_time} is confirmed."
+                        ></textarea>
+                      </label>
+
+                      <label class="admin-field admin-field-wide">
+                        <span>Admin Alert Template</span>
+                        <textarea
+                          name="notifications_admin_template"
+                          rows="3"
+                          placeholder="New booking: {name} booked {session_title} on {session_date} at {session_time}."
+                        ></textarea>
+                      </label>
+
+                      <label class="admin-field admin-field-wide">
+                        <span>Email Footer / Signature</span>
+                        <textarea
+                          name="notifications_footer"
+                          rows="3"
+                          placeholder="Business name, contact details, support info, and social links."
+                        ></textarea>
+                      </label>
+                    </div>
+                  </form>
+                </article>
+              </div>
+            </section>
+          </section>
+        </section>
+
+        <section
+          class="admin-tab-panel is-hidden"
+          data-admin-tab-panel="customers"
+        >
+          <section class="calendar-card">
+            <p class="calendar-eyebrow">Customers</p>
+            <h2 class="calendar-title">Customer Records</h2>
+            <div class="customer-list" data-customer-list></div>
+          </section>
+        </section>
+
+        <section
+          class="admin-tab-panel is-hidden"
+          data-admin-tab-panel="events"
+        >
+          <section class="calendar-card">
+            <p class="calendar-eyebrow">Events</p>
+            <h2 class="calendar-title">Event Management</h2>
+            <div class="admin-session-list" data-event-list></div>
+          </section>
+        </section>
+
+        <section
+          class="admin-tab-panel is-hidden"
+          data-admin-tab-panel="classes"
+        >
+          <section class="calendar-card">
+            <p class="calendar-eyebrow">Classes</p>
+            <h2 class="calendar-title">Class Management</h2>
+            <div class="admin-session-list" data-class-list></div>
+          </section>
+        </section>
+      </section>
+    </main>
+
+    <div class="admin-modal is-hidden" data-admin-modal aria-hidden="true">
+      <div class="admin-modal-backdrop" data-admin-modal-close></div>
+      <section
+        class="admin-modal-dialog"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="admin-modal-title"
+      >
+        <header class="admin-modal-header">
+          <div>
+            <p class="calendar-eyebrow">Create Booking Item</p>
+            <h2 class="admin-modal-title" id="admin-modal-title">
+              New Event or Class
+            </h2>
+          </div>
+          <button
+            type="button"
+            class="admin-modal-close"
+            aria-label="Close create modal"
+            data-admin-modal-close
+          >
+            X
+          </button>
+        </header>
+
+        <form class="admin-form" data-admin-create-form>
+          <div class="admin-form-grid">
+            <label class="admin-field">
+              <span>Type</span>
+              <select name="type" required data-session-type>
+                <option value="class">Class</option>
+                <option value="event">Event</option>
+              </select>
+            </label>
+
+            <div class="admin-class-fields" data-class-fields>
+              <div class="admin-event-fields-title">Class Details</div>
+
+              <label class="admin-field admin-field-wide">
+                <span>Name</span>
+                <input
+                  type="text"
+                  name="name"
+                  placeholder="Enter class name"
+                  required
+                />
+              </label>
+
+              <label class="admin-field">
+                <span>Price</span>
+                <input
+                  type="text"
+                  name="price"
+                  inputmode="decimal"
+                  placeholder="$0.00"
+                  data-currency-input
+                  required
+                />
+              </label>
+
+              <label class="admin-field">
+                <span>Capped At</span>
+                <input
+                  type="number"
+                  name="capacity"
+                  min="1"
+                  placeholder="Total students"
+                  required
+                />
+              </label>
+
+              <div class="admin-field admin-field-wide admin-capacity-panel">
+                <span>Capacity Controls</span>
+                <div class="admin-capacity-grid">
+                  <label class="admin-capacity-toggle">
+                    <input type="checkbox" name="waitlist_enabled" />
+                    <span>Enable waitlist</span>
+                  </label>
+                  <label class="admin-field">
+                    <span>Waitlist Spots</span>
+                    <input
+                      type="number"
+                      name="waitlist_limit"
+                      min="0"
+                      value="0"
+                    />
+                  </label>
+                  <label class="admin-capacity-toggle">
+                    <input
+                      type="checkbox"
+                      name="auto_promote_waitlist"
+                      checked
+                    />
+                    <span>Auto-promote when spots open</span>
+                  </label>
+                  <label class="admin-capacity-toggle">
+                    <input
+                      type="checkbox"
+                      name="auto_close_when_full"
+                      checked
+                    />
+                    <span>Auto-close when full</span>
+                  </label>
+                  <label class="admin-capacity-toggle">
+                    <input type="checkbox" name="allow_overbooking" />
+                    <span>Allow overbooking</span>
+                  </label>
+                  <label class="admin-field">
+                    <span>Overbooking Limit</span>
+                    <input
+                      type="number"
+                      name="overbooking_limit"
+                      min="0"
+                      value="0"
+                    />
+                  </label>
+                </div>
+              </div>
+
+              <label class="admin-field">
+                <span>Date</span>
+                <input type="date" name="date" required />
+              </label>
+
+              <label class="admin-field">
+                <span>Start Time</span>
+                <select name="start_time" required data-time-select>
+                  <option value="">Select a start time</option>
+                </select>
+              </label>
+
+              <label class="admin-field">
+                <span>Age Group</span>
+                <input
+                  type="text"
+                  name="age_group"
+                  placeholder="All ages or 12-16"
+                />
+              </label>
+
+              <label class="admin-field">
+                <span>Duration</span>
+                <input type="text" name="duration" placeholder="60 mins" />
+              </label>
+
+              <label class="admin-field">
+                <span>Instructor / Host</span>
+                <input
+                  type="text"
+                  name="instructor"
+                  placeholder="Teacher or presenter"
+                />
+              </label>
+
+              <label class="admin-field">
+                <span>Location</span>
+                <input type="text" name="location" placeholder="Studio A" />
+              </label>
+
+              <label class="admin-field admin-field-wide">
+                <span>Address</span>
+                <div class="address-autocomplete">
+                  <input
+                    type="text"
+                    name="address"
+                    placeholder="123 Main Street, City, Postcode"
+                    data-address-search
+                    autocomplete="off"
+                  />
+                  <div
+                    class="address-suggestions is-hidden"
+                    data-address-suggestions
+                  ></div>
+                </div>
+              </label>
+
+              <input type="hidden" name="latitude" />
+              <input type="hidden" name="longitude" />
+
+              <div class="admin-field admin-field-wide">
+                <span>Map Preview</span>
+                <div
+                  class="address-map-preview is-empty"
+                  data-address-map-preview
+                >
+                  Select an address to preview the map.
+                </div>
+              </div>
+
+              <label class="admin-field admin-field-wide">
+                <span>Description</span>
+                <textarea
+                  name="description"
+                  rows="3"
+                  placeholder="What should students know before booking?"
+                ></textarea>
+              </label>
+
+              <label class="admin-field admin-field-wide">
+                <span>Notes</span>
+                <textarea
+                  name="notes"
+                  rows="3"
+                  placeholder="Internal notes, equipment, requirements, or reminders"
+                ></textarea>
+              </label>
+            </div>
+
+            <div class="admin-event-fields is-hidden" data-event-fields>
+              <div class="admin-event-fields-title">Event Details</div>
+
+              <label class="admin-field admin-field-wide">
+                <span>Name</span>
+                <input
+                  type="text"
+                  name="event_name"
+                  placeholder="Enter event name"
+                />
+              </label>
+
+              <label class="admin-field">
+                <span>Price</span>
+                <input
+                  type="text"
+                  name="event_price"
+                  inputmode="decimal"
+                  placeholder="$0.00"
+                  data-currency-input
+                />
+              </label>
+
+              <label class="admin-field">
+                <span>Capped At</span>
+                <input
+                  type="number"
+                  name="event_capacity"
+                  min="1"
+                  placeholder="Total attendees"
+                />
+              </label>
+
+              <div class="admin-field admin-field-wide admin-capacity-panel">
+                <span>Capacity Controls</span>
+                <div class="admin-capacity-grid">
+                  <label class="admin-capacity-toggle">
+                    <input type="checkbox" name="event_waitlist_enabled" />
+                    <span>Enable waitlist</span>
+                  </label>
+                  <label class="admin-field">
+                    <span>Waitlist Spots</span>
+                    <input
+                      type="number"
+                      name="event_waitlist_limit"
+                      min="0"
+                      value="0"
+                    />
+                  </label>
+                  <label class="admin-capacity-toggle">
+                    <input
+                      type="checkbox"
+                      name="event_auto_promote_waitlist"
+                      checked
+                    />
+                    <span>Auto-promote when spots open</span>
+                  </label>
+                  <label class="admin-capacity-toggle">
+                    <input
+                      type="checkbox"
+                      name="event_auto_close_when_full"
+                      checked
+                    />
+                    <span>Auto-close when full</span>
+                  </label>
+                  <label class="admin-capacity-toggle">
+                    <input type="checkbox" name="event_allow_overbooking" />
+                    <span>Allow overbooking</span>
+                  </label>
+                  <label class="admin-field">
+                    <span>Overbooking Limit</span>
+                    <input
+                      type="number"
+                      name="event_overbooking_limit"
+                      min="0"
+                      value="0"
+                    />
+                  </label>
+                </div>
+              </div>
+
+              <label class="admin-field">
+                <span>Date</span>
+                <input type="date" name="event_date" />
+              </label>
+
+              <label class="admin-field">
+                <span>Start Time</span>
+                <select name="event_start_time" data-time-select>
+                  <option value="">Select a start time</option>
+                </select>
+              </label>
+
+              <label class="admin-field">
+                <span>Instructor / Host</span>
+                <input
+                  type="text"
+                  name="event_instructor"
+                  placeholder="Host or presenter"
+                />
+              </label>
+
+              <label class="admin-field">
+                <span>Location</span>
+                <input
+                  type="text"
+                  name="event_location"
+                  placeholder="Main Hall"
+                />
+              </label>
+
+              <label class="admin-field admin-field-wide">
+                <span>Address</span>
+                <div class="address-autocomplete">
+                  <input
+                    type="text"
+                    name="event_address"
+                    placeholder="123 Main Street, City, Postcode"
+                    data-address-search
+                    autocomplete="off"
+                  />
+                  <div
+                    class="address-suggestions is-hidden"
+                    data-address-suggestions
+                  ></div>
+                </div>
+              </label>
+
+              <input type="hidden" name="event_latitude" />
+              <input type="hidden" name="event_longitude" />
+
+              <div class="admin-field admin-field-wide">
+                <span>Map Preview</span>
+                <div
+                  class="address-map-preview is-empty"
+                  data-address-map-preview
+                >
+                  Select an address to preview the map.
+                </div>
+              </div>
+
+              <label class="admin-field admin-field-wide">
+                <span>Description</span>
+                <textarea
+                  name="event_description"
+                  rows="3"
+                  placeholder="What should people know before booking?"
+                ></textarea>
+              </label>
+
+              <label class="admin-field admin-field-wide">
+                <span>Notes</span>
+                <textarea
+                  name="event_notes"
+                  rows="3"
+                  placeholder="Internal notes, setup requirements, or reminders"
+                ></textarea>
+              </label>
+
+              <label class="admin-field">
+                <span>End Time</span>
+                <input type="time" name="event_end_time" />
+              </label>
+
+              <label class="admin-field">
+                <span>Dress Code</span>
+                <input
+                  type="text"
+                  name="dress_code"
+                  placeholder="Cocktail, casual, themed"
+                />
+              </label>
+
+              <label class="admin-field admin-field-wide">
+                <span>What To Bring</span>
+                <textarea
+                  name="what_to_bring"
+                  rows="2"
+                  placeholder="Tickets, shoes, water bottle, ID, props"
+                ></textarea>
+              </label>
+
+              <label class="admin-field admin-field-wide">
+                <span>Arrival Notes</span>
+                <textarea
+                  name="arrival_notes"
+                  rows="2"
+                  placeholder="Arrive 15 minutes early, check in at front desk, doors close at 7:10 PM"
+                ></textarea>
+              </label>
+
+              <label class="admin-field admin-field-wide">
+                <span>Parking / Entry</span>
+                <textarea
+                  name="parking_info"
+                  rows="2"
+                  placeholder="Street parking, building entrance, lift access"
+                ></textarea>
+              </label>
+
+              <label class="admin-field admin-field-wide">
+                <span>Refund Policy</span>
+                <textarea
+                  name="refund_policy"
+                  rows="2"
+                  placeholder="Non-refundable, transferable up to 24 hours before start"
+                ></textarea>
+              </label>
+            </div>
+          </div>
+
+          <div class="admin-form-actions">
+            <p
+              class="admin-form-status"
+              data-admin-form-status
+              aria-live="polite"
+            ></p>
+            <div class="admin-form-buttons">
+              <button type="button" class="calendar-nav" data-admin-modal-close>
+                Cancel
+              </button>
+              <button type="submit" class="calendar-create">Save Item</button>
+            </div>
+          </div>
+        </form>
+      </section>
+    </div>
+
+    <div
+      class="admin-modal is-hidden"
+      data-admin-details-modal
+      aria-hidden="true"
+    >
+      <div class="admin-modal-backdrop" data-admin-details-close></div>
+      <section
+        class="admin-modal-dialog public-modal-dialog"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="admin-details-title"
+      >
+        <header class="admin-modal-header">
+          <div>
+            <p class="calendar-eyebrow">Booking Item</p>
+            <h2
+              class="admin-modal-title"
+              id="admin-details-title"
+              data-admin-details-title
+            >
+              Session Details
+            </h2>
+          </div>
+          <button
+            type="button"
+            class="admin-modal-close"
+            aria-label="Close session details"
+            data-admin-details-close
+          >
+            X
+          </button>
+        </header>
+
+        <div class="public-modal-content" data-admin-details-content></div>
+
+        <div class="admin-form-actions">
+          <p class="admin-form-status">
+            This is the current event/class information shown to users.
+          </p>
+          <div class="admin-form-buttons">
+            <button type="button" class="calendar-nav" data-admin-edit-session>
+              Edit
+            </button>
+            <button
+              type="button"
+              class="calendar-nav admin-delete-button"
+              data-admin-delete-session
+            >
+              Delete
+            </button>
+            <button type="button" class="calendar-nav" data-admin-details-close>
+              Close
+            </button>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <div
+      class="admin-modal is-hidden"
+      data-admin-delete-modal
+      aria-hidden="true"
+    >
+      <div class="admin-modal-backdrop" data-admin-delete-close></div>
+      <section
+        class="admin-modal-dialog admin-confirm-dialog"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="admin-delete-title"
+      >
+        <header class="admin-modal-header">
+          <div>
+            <p class="calendar-eyebrow">Confirm Delete</p>
+            <h2 class="admin-modal-title" id="admin-delete-title">
+              Are you sure?
+            </h2>
+          </div>
+          <button
+            type="button"
+            class="admin-modal-close"
+            aria-label="Close delete confirmation"
+            data-admin-delete-close
+          >
+            X
+          </button>
+        </header>
+
+        <p class="daily-event-empty" data-admin-delete-message>
+          This will permanently remove this class or event.
+        </p>
+
+        <div class="admin-form-actions">
+          <p class="admin-form-status">This action cannot be undone.</p>
+          <div class="admin-form-buttons">
+            <button type="button" class="calendar-nav" data-admin-delete-close>
+              No
+            </button>
+            <button
+              type="button"
+              class="calendar-create admin-delete-confirm"
+              data-admin-delete-confirm
+            >
+              Yes
+            </button>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <div
+      class="admin-modal is-hidden"
+      data-admin-attendees-modal
+      aria-hidden="true"
+    >
+      <div class="admin-modal-backdrop" data-admin-attendees-close></div>
+      <section
+        class="admin-modal-dialog"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="admin-attendees-title"
+      >
+        <header class="admin-modal-header">
+          <div>
+            <p class="calendar-eyebrow">Class Attendees</p>
+            <h2
+              class="admin-modal-title"
+              id="admin-attendees-title"
+              data-admin-attendees-title
+            >
+              Attendees
+            </h2>
+          </div>
+          <button
+            type="button"
+            class="admin-modal-close"
+            aria-label="Close attendees modal"
+            data-admin-attendees-close
+          >
+            X
+          </button>
+        </header>
+
+        <label class="admin-attendee-search">
+          <span>Search Attendees</span>
+          <input
+            type="text"
+            placeholder="Search by name, email, code, or notes"
+            data-admin-attendees-search
+          />
+        </label>
+
+        <div class="admin-attendees-list" data-admin-attendees-list></div>
+
+        <div class="admin-form-actions">
+          <p class="admin-form-status">
+            Attendees are customers who booked this class from the public site.
+          </p>
+          <div class="admin-form-buttons">
+            <button
+              type="button"
+              class="calendar-nav"
+              data-admin-attendees-close
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <div
+      class="admin-modal is-hidden"
+      data-admin-event-attendees-modal
+      aria-hidden="true"
+    >
+      <div class="admin-modal-backdrop" data-admin-event-attendees-close></div>
+      <section
+        class="admin-modal-dialog"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="admin-event-attendees-title"
+      >
+        <header class="admin-modal-header">
+          <div>
+            <p class="calendar-eyebrow">Event Attendees</p>
+            <h2
+              class="admin-modal-title"
+              id="admin-event-attendees-title"
+              data-admin-event-attendees-title
+            >
+              Attendees
+            </h2>
+          </div>
+          <button
+            type="button"
+            class="admin-modal-close"
+            aria-label="Close event attendees modal"
+            data-admin-event-attendees-close
+          >
+            X
+          </button>
+        </header>
+
+        <label class="admin-attendee-search">
+          <span>Search Attendees</span>
+          <input
+            type="text"
+            placeholder="Search by name, email, code, or notes"
+            data-admin-event-attendees-search
+          />
+        </label>
+
+        <div class="admin-attendees-list" data-admin-event-attendees-list></div>
+
+        <div class="admin-form-actions">
+          <p class="admin-form-status">
+            Attendees are customers who booked this event from the public site.
+          </p>
+          <div class="admin-form-buttons">
+            <button
+              type="button"
+              class="calendar-nav"
+              data-admin-event-attendees-close
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <script src="../js/shared-schedule.js"></script>
+    <script src="../js/calendar.js"></script>
+  </body>
+</html>

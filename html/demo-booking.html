@@ -1,0 +1,910 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Demo Booking System</title>
+    <link rel="icon" type="image/webp" href="../img/logo-green.webp" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../css/booking.css" />
+  </head>
+  <body>
+    <main class="public-shell">
+      <section class="public-layout" aria-label="Demo booking calendar">
+        <div class="public-main">
+          <div class="public-actions">
+            <div
+              class="public-filter-group"
+              role="group"
+              aria-label="Booking type"
+            >
+              <button
+                type="button"
+                class="public-filter is-active"
+                data-booking-filter="all"
+              >
+                All
+              </button>
+              <button
+                type="button"
+                class="public-filter"
+                data-booking-filter="class"
+              >
+                Classes
+              </button>
+              <button
+                type="button"
+                class="public-filter"
+                data-booking-filter="event"
+              >
+                Events
+              </button>
+            </div>
+          </div>
+
+          <section
+            class="calendar-view-panel"
+            data-public-calendar-layout
+            aria-label="Monthly booking calendar"
+          >
+            <section class="calendar-card">
+              <header class="calendar-toolbar">
+                <div>
+                  <p class="calendar-eyebrow">Public Calendar</p>
+                  <h2 class="calendar-title public-title">Monthly Bookings</h2>
+                </div>
+                <div class="calendar-controls">
+                  <button
+                    type="button"
+                    class="calendar-nav"
+                    data-public-nav="prev"
+                    aria-label="Previous month"
+                  >
+                    Prev
+                  </button>
+                  <div
+                    class="calendar-month"
+                    data-public-month
+                    aria-live="polite"
+                  ></div>
+                  <button
+                    type="button"
+                    class="calendar-nav"
+                    data-public-nav="next"
+                    aria-label="Next month"
+                  >
+                    Next
+                  </button>
+                </div>
+              </header>
+
+              <div
+                class="calendar-card-controls calendar-card-controls--view-only"
+              >
+                <label class="calendar-view-picker">
+                  <span class="calendar-view-label">View</span>
+                  <select
+                    class="calendar-view-select"
+                    aria-label="Calendar view"
+                    data-public-view-select
+                  >
+                    <option value="daily">Daily View</option>
+                    <option value="weekly">Weekly View</option>
+                    <option value="monthly" selected>Monthly View</option>
+                  </select>
+                </label>
+              </div>
+
+              <div class="calendar-weekdays" aria-hidden="true">
+                <span>Sun</span>
+                <span>Mon</span>
+                <span>Tue</span>
+                <span>Wed</span>
+                <span>Thu</span>
+                <span>Fri</span>
+                <span>Sat</span>
+              </div>
+
+              <div
+                class="calendar-grid public-calendar-grid"
+                data-public-calendar-grid
+              ></div>
+            </section>
+          </section>
+
+          <section
+            class="calendar-view-panel daily-layout is-hidden"
+            data-public-daily-layout
+            aria-label="Daily booking calendar"
+          >
+            <div class="daily-card">
+              <header class="daily-toolbar">
+                <div>
+                  <p class="calendar-eyebrow">Public Calendar</p>
+                  <h2 class="calendar-title public-title">Daily Bookings</h2>
+                </div>
+                <div class="calendar-controls">
+                  <button
+                    type="button"
+                    class="calendar-nav"
+                    data-public-daily-nav="prev"
+                    aria-label="Previous day"
+                  >
+                    Prev
+                  </button>
+                  <div
+                    class="calendar-month"
+                    data-public-daily-label
+                    aria-live="polite"
+                  ></div>
+                  <button
+                    type="button"
+                    class="calendar-nav"
+                    data-public-daily-nav="next"
+                    aria-label="Next day"
+                  >
+                    Next
+                  </button>
+                </div>
+              </header>
+
+              <div
+                class="calendar-card-controls calendar-card-controls--view-only"
+              >
+                <label class="calendar-view-picker">
+                  <span class="calendar-view-label">View</span>
+                  <select
+                    class="calendar-view-select"
+                    aria-label="Calendar view"
+                    data-public-view-select
+                  >
+                    <option value="daily" selected>Daily View</option>
+                    <option value="weekly">Weekly View</option>
+                    <option value="monthly">Monthly View</option>
+                  </select>
+                </label>
+              </div>
+
+              <div class="daily-grid" data-public-daily-grid></div>
+            </div>
+          </section>
+
+          <section
+            class="calendar-view-panel weekly-layout is-hidden"
+            data-public-weekly-layout
+            aria-label="Weekly booking calendar"
+          >
+            <div class="weekly-card">
+              <header class="weekly-toolbar">
+                <div>
+                  <p class="calendar-eyebrow">Public Calendar</p>
+                  <h2 class="calendar-title public-title">Weekly Bookings</h2>
+                </div>
+                <div class="calendar-controls">
+                  <button
+                    type="button"
+                    class="calendar-nav"
+                    data-public-weekly-nav="prev"
+                    aria-label="Previous week"
+                  >
+                    Prev
+                  </button>
+                  <div
+                    class="calendar-month"
+                    data-public-weekly-label
+                    aria-live="polite"
+                  ></div>
+                  <button
+                    type="button"
+                    class="calendar-nav"
+                    data-public-weekly-nav="next"
+                    aria-label="Next week"
+                  >
+                    Next
+                  </button>
+                </div>
+              </header>
+
+              <div
+                class="calendar-card-controls calendar-card-controls--view-only"
+              >
+                <label class="calendar-view-picker">
+                  <span class="calendar-view-label">View</span>
+                  <select
+                    class="calendar-view-select"
+                    aria-label="Calendar view"
+                    data-public-view-select
+                  >
+                    <option value="daily">Daily View</option>
+                    <option value="weekly" selected>Weekly View</option>
+                    <option value="monthly">Monthly View</option>
+                  </select>
+                </label>
+              </div>
+
+              <div class="weekly-board">
+                <div class="weekly-times" data-public-weekly-times></div>
+                <div class="weekly-columns-wrap">
+                  <div class="weekly-columns" data-public-weekly-columns></div>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+
+        <aside class="public-sidebar">
+          <section class="mini-calendar-card public-summary-card">
+            <p class="calendar-eyebrow">Selected Date</p>
+            <h2 class="public-summary-title" data-selected-date-label>
+              Select a date
+            </h2>
+            <p
+              class="daily-event-empty public-summary-copy"
+              data-selected-date-copy
+            >
+              Choose a highlighted day to view available classes and events.
+            </p>
+          </section>
+
+          <section class="mini-calendar-card public-session-card">
+            <div class="public-session-header">
+              <p class="calendar-eyebrow">Available Sessions</p>
+              <span class="public-session-count" data-public-session-count
+                >0</span
+              >
+            </div>
+            <div class="public-session-list" data-public-session-list></div>
+          </section>
+
+          <section class="mini-calendar-card public-booking-card">
+            <p class="calendar-eyebrow">Reservation</p>
+            <h2 class="public-booking-title" data-public-booking-title>
+              No session selected
+            </h2>
+            <form class="public-booking-form" data-public-booking-form>
+              <label class="public-field">
+                <span>Name</span>
+                <input
+                  type="text"
+                  name="name"
+                  placeholder="Your name"
+                  required
+                />
+              </label>
+              <label class="public-field">
+                <span>Email</span>
+                <input
+                  type="email"
+                  name="email"
+                  placeholder="name@example.com"
+                  required
+                />
+              </label>
+              <label class="public-field">
+                <span>Notes</span>
+                <textarea
+                  name="notes"
+                  rows="3"
+                  placeholder="Anything we should know?"
+                ></textarea>
+              </label>
+              <button type="submit" class="calendar-create">Book Now</button>
+              <p
+                class="public-form-status"
+                data-public-form-status
+                aria-live="polite"
+              ></p>
+            </form>
+            <button
+              type="button"
+              class="text-link-button public-refund-link"
+              data-refund-policy-open
+            >
+              Refund Policy
+            </button>
+          </section>
+        </aside>
+      </section>
+    </main>
+
+    <div class="admin-modal is-hidden" data-public-modal aria-hidden="true">
+      <div class="admin-modal-backdrop" data-public-modal-close></div>
+      <section
+        class="admin-modal-dialog public-modal-dialog"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="public-modal-title"
+      >
+        <header class="admin-modal-header">
+          <div>
+            <p class="calendar-eyebrow">Session Details</p>
+            <h2
+              class="admin-modal-title"
+              id="public-modal-title"
+              data-public-modal-title
+            >
+              Event Details
+            </h2>
+          </div>
+          <button
+            type="button"
+            class="admin-modal-close"
+            aria-label="Close session details"
+            data-public-modal-close
+          >
+            X
+          </button>
+        </header>
+
+        <div class="public-modal-content" data-public-modal-content></div>
+
+        <div class="admin-form-actions">
+          <p class="admin-form-status">
+            Review the session details, then book from the reservation panel.
+          </p>
+          <div class="admin-form-buttons">
+            <button type="button" class="calendar-nav" data-public-modal-close>
+              Close
+            </button>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <div class="admin-modal is-hidden" data-refund-modal aria-hidden="true">
+      <div class="admin-modal-backdrop" data-refund-modal-close></div>
+      <section
+        class="admin-modal-dialog public-modal-dialog"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="refund-modal-title"
+      >
+        <header class="admin-modal-header">
+          <div>
+            <p class="calendar-eyebrow">Payments</p>
+            <h2
+              class="admin-modal-title"
+              id="refund-modal-title"
+              data-refund-modal-title
+            >
+              Refund Policy
+            </h2>
+          </div>
+          <button
+            type="button"
+            class="admin-modal-close"
+            aria-label="Close refund policy"
+            data-refund-modal-close
+          >
+            X
+          </button>
+        </header>
+
+        <div class="public-modal-content" data-refund-modal-content></div>
+
+        <div class="admin-form-actions">
+          <p class="admin-form-status">
+            Review the refund terms before booking.
+          </p>
+          <div class="admin-form-buttons">
+            <button type="button" class="calendar-nav" data-refund-modal-close>
+              Close
+            </button>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <div class="admin-modal is-hidden" data-payment-modal aria-hidden="true">
+      <div class="admin-modal-backdrop" data-payment-modal-close></div>
+      <section
+        class="admin-modal-dialog public-modal-dialog"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="payment-modal-title"
+      >
+        <header class="admin-modal-header">
+          <div>
+            <p class="calendar-eyebrow">Checkout</p>
+            <h2
+              class="admin-modal-title"
+              id="payment-modal-title"
+              data-payment-modal-title
+            >
+              Choose Payment Method
+            </h2>
+          </div>
+          <button
+            type="button"
+            class="admin-modal-close"
+            aria-label="Close payment options"
+            data-payment-modal-close
+          >
+            X
+          </button>
+        </header>
+
+        <div class="public-modal-content" data-payment-modal-content></div>
+
+        <div class="admin-form-actions">
+          <p class="admin-form-status" data-payment-modal-status>
+            Select how you want to continue your booking.
+          </p>
+          <div class="admin-form-buttons">
+            <button type="button" class="calendar-nav" data-payment-modal-close>
+              Cancel
+            </button>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <div class="admin-modal is-hidden" data-card-modal aria-hidden="true">
+      <div class="admin-modal-backdrop" data-card-modal-close></div>
+      <section
+        class="admin-modal-dialog public-modal-dialog"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="card-modal-title"
+      >
+        <header class="admin-modal-header">
+          <div>
+            <p class="calendar-eyebrow">Checkout</p>
+            <h2
+              class="admin-modal-title"
+              id="card-modal-title"
+              data-card-modal-title
+            >
+              Credit Card Payment
+            </h2>
+          </div>
+          <button
+            type="button"
+            class="admin-modal-close"
+            aria-label="Close card payment"
+            data-card-modal-close
+          >
+            X
+          </button>
+        </header>
+
+        <div class="public-modal-content">
+          <form
+            class="public-booking-form fake-card-form"
+            data-card-payment-form
+          >
+            <label class="public-field">
+              <span>Card Number</span>
+              <input
+                type="text"
+                name="card_number"
+                placeholder="4242 4242 4242 4242"
+                required
+              />
+            </label>
+            <div class="fake-card-grid">
+              <label class="public-field">
+                <span>Expiry</span>
+                <input
+                  type="text"
+                  name="card_expiry"
+                  placeholder="12/34"
+                  required
+                />
+              </label>
+              <label class="public-field">
+                <span>CVC</span>
+                <input type="text" name="card_cvc" placeholder="123" required />
+              </label>
+            </div>
+            <label class="public-field">
+              <span>Name On Card</span>
+              <input
+                type="text"
+                name="card_name"
+                placeholder="Jane Doe"
+                required
+              />
+            </label>
+            <p
+              class="public-form-status"
+              data-card-modal-status
+              aria-live="polite"
+            >
+              Demo card form only. No real payment is processed.
+            </p>
+            <div class="admin-form-buttons">
+              <button type="button" class="calendar-nav" data-card-modal-back>
+                Back
+              </button>
+              <button type="submit" class="calendar-create">Pay Now</button>
+            </div>
+          </form>
+        </div>
+      </section>
+    </div>
+
+    <div
+      class="admin-modal is-hidden"
+      data-onsite-code-modal
+      aria-hidden="true"
+    >
+      <div class="admin-modal-backdrop" data-onsite-code-modal-close></div>
+      <section
+        class="admin-modal-dialog public-modal-dialog"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="onsite-code-modal-title"
+      >
+        <header class="admin-modal-header">
+          <div>
+            <p class="calendar-eyebrow">Pay On-Site</p>
+            <h2
+              class="admin-modal-title"
+              id="onsite-code-modal-title"
+              data-onsite-code-modal-title
+            >
+              Your Check-In Code
+            </h2>
+          </div>
+          <button
+            type="button"
+            class="admin-modal-close"
+            aria-label="Close on-site code"
+            data-onsite-code-modal-close
+          >
+            X
+          </button>
+        </header>
+
+        <div class="public-modal-content" data-onsite-code-modal-content></div>
+
+        <div class="admin-form-actions">
+          <p class="admin-form-status">
+            Bring this code to your class or event for staff check-in.
+          </p>
+          <div class="admin-form-buttons">
+            <button
+              type="button"
+              class="calendar-nav"
+              data-onsite-code-modal-close
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <script>
+      (() => {
+        const clone = (value) => JSON.parse(JSON.stringify(value));
+        const whole = (value, fallback = 0) => {
+          const numeric = Number(value);
+          return Number.isFinite(numeric) ? Math.max(0, Math.floor(numeric)) : fallback;
+        };
+        const today = new Date();
+        const addDays = (date, days) => {
+          const next = new Date(date);
+          next.setDate(next.getDate() + days);
+          return next;
+        };
+        const toDateKey = (date) =>
+          `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, "0")}-${String(
+            date.getDate(),
+          ).padStart(2, "0")}`;
+        const hexToRgb = (hex) => {
+          const normalized = String(hex || "").replace("#", "").trim();
+          if (!/^[0-9a-fA-F]{6}$/.test(normalized)) {
+            return null;
+          }
+          return {
+            r: parseInt(normalized.slice(0, 2), 16),
+            g: parseInt(normalized.slice(2, 4), 16),
+            b: parseInt(normalized.slice(4, 6), 16),
+          };
+        };
+        const rgba = (hex, alpha) => {
+          const rgb = hexToRgb(hex);
+          return rgb ? `rgba(${rgb.r}, ${rgb.g}, ${rgb.b}, ${alpha})` : `rgba(73, 209, 15, ${alpha})`;
+        };
+        const normalizeSessionCapacitySettings = (sessionInput) => {
+          const session = { ...(sessionInput || {}) };
+          return {
+            ...session,
+            spots: whole(session.spots, 0),
+            waitlistEnabled: Boolean(session.waitlistEnabled),
+            waitlistLimit: Boolean(session.waitlistEnabled) ? whole(session.waitlistLimit, 0) : 0,
+            autoPromoteWaitlist: session.autoPromoteWaitlist !== false,
+            autoCloseWhenFull: session.autoCloseWhenFull !== false,
+            allowOverbooking: Boolean(session.allowOverbooking),
+            overbookingLimit: Boolean(session.allowOverbooking) ? whole(session.overbookingLimit, 0) : 0,
+          };
+        };
+        const sessions = [
+          {
+            id: "demo-hiphop",
+            title: "Beginner Hip Hop",
+            type: "class",
+            date: toDateKey(addDays(today, 1)),
+            time: "6:00 PM",
+            price: "$18",
+            ageGroup: "Teens and Adults",
+            duration: "45 mins",
+            location: "Main Studio",
+            instructor: "Ariana K",
+            description: "A welcoming intro class focused on groove, musical timing, and simple combinations.",
+            address: "101 Queen Street, Auckland CBD",
+            latitude: -36.8485,
+            longitude: 174.7633,
+            spots: 16,
+            waitlistEnabled: true,
+            waitlistLimit: 4,
+            autoCloseWhenFull: false,
+          },
+          {
+            id: "demo-contemporary",
+            title: "Contemporary Fusion",
+            type: "class",
+            date: toDateKey(addDays(today, 3)),
+            time: "7:30 PM",
+            price: "$24",
+            ageGroup: "Adults",
+            duration: "60 mins",
+            location: "Black Box Room",
+            instructor: "Mika T",
+            description: "Technique, floor work, and expressive phrase building for intermediate movers.",
+            address: "45 Karangahape Road, Auckland",
+            latitude: -36.8572,
+            longitude: 174.7587,
+            spots: 12,
+            waitlistEnabled: true,
+            waitlistLimit: 5,
+            allowOverbooking: true,
+            overbookingLimit: 2,
+            autoCloseWhenFull: false,
+          },
+          {
+            id: "demo-jam",
+            title: "Open Studio Jam",
+            type: "event",
+            date: toDateKey(addDays(today, 6)),
+            time: "10:00 AM",
+            price: "$10",
+            ageGroup: "All ages",
+            duration: "90 mins",
+            location: "Community Hall",
+            instructor: "Hosted Session",
+            description: "A flexible booking block for rehearsal, freestyle rounds, and community collaboration.",
+            address: "22 Dominion Road, Auckland",
+            latitude: -36.8832,
+            longitude: 174.7468,
+            spots: 30,
+            waitlistEnabled: true,
+            waitlistLimit: 8,
+            autoCloseWhenFull: false,
+          },
+          {
+            id: "demo-latin-night",
+            title: "Latin Social Night",
+            type: "event",
+            date: toDateKey(addDays(today, 10)),
+            time: "8:00 PM",
+            price: "$28",
+            ageGroup: "Adults",
+            duration: "2 hrs",
+            location: "Rooftop Venue",
+            instructor: "Guest DJs",
+            description: "Performance showcases, partner rotation, and a social dance floor with a live DJ set.",
+            address: "12 Viaduct Harbour Avenue, Auckland",
+            latitude: -36.8405,
+            longitude: 174.758,
+            spots: 40,
+            waitlistEnabled: true,
+            waitlistLimit: 10,
+            allowOverbooking: true,
+            overbookingLimit: 4,
+            autoCloseWhenFull: false,
+          },
+          {
+            id: "demo-heels",
+            title: "Heels Performance Lab",
+            type: "class",
+            date: toDateKey(addDays(today, 12)),
+            time: "6:30 PM",
+            price: "$26",
+            ageGroup: "Adults",
+            duration: "60 mins",
+            location: "Main Studio",
+            instructor: "Selene J",
+            description: "Confidence-driven choreography session with musicality, lines, and stage presence work.",
+            address: "101 Queen Street, Auckland CBD",
+            latitude: -36.8485,
+            longitude: 174.7633,
+            spots: 10,
+            waitlistEnabled: true,
+            waitlistLimit: 3,
+            autoCloseWhenFull: false,
+          },
+        ].map(normalizeSessionCapacitySettings);
+        const bookings = [
+          {
+            id: "seed-1",
+            sessionId: "demo-hiphop",
+            sessionTitle: "Beginner Hip Hop",
+            sessionDate: toDateKey(addDays(today, 1)),
+            sessionTime: "6:00 PM",
+            customerName: "Mia",
+            customerEmail: "mia@example.com",
+            notes: "",
+            paymentMethod: "online",
+            onsiteCode: "",
+            createdAt: new Date(addDays(today, -2)).toISOString(),
+          },
+          {
+            id: "seed-2",
+            sessionId: "demo-contemporary",
+            sessionTitle: "Contemporary Fusion",
+            sessionDate: toDateKey(addDays(today, 3)),
+            sessionTime: "7:30 PM",
+            customerName: "Leo",
+            customerEmail: "leo@example.com",
+            notes: "",
+            paymentMethod: "onsite",
+            onsiteCode: "ONS-DEMO1001",
+            createdAt: new Date(addDays(today, -1)).toISOString(),
+          },
+        ];
+        const defaultBranding = {
+          primary: "#49d10f",
+          primaryText: "#ffffff",
+          accent: "#0b130a",
+          surface: "#ffffff",
+          buttonStyle: "solid",
+          bookingTheme: "clean-light",
+        };
+        const defaultPaymentSettings = {
+          stripePublishableKey: "pk_demo_12345",
+          stripeSecretKey: "",
+          stripeWebhookSecret: "",
+          paymentPublicNotes: "Demo checkout only. No real payment is processed.",
+          paymentsRequireFullPayment: true,
+          paymentsAllowPayOnsite: true,
+          transactionSurcharge: "2.5%",
+          paymentDueNotes: "Card or pay on-site is available in this demo.",
+          refundRule: "cancellation-window",
+          refundCutoff: "24 hours before class start",
+          refundAmount: "Full class credit",
+          refundDepositNonrefundable: false,
+          refundPolicyCopy:
+            "Cancel at least 24 hours before the booked session to receive a full class credit. Late cancellations and no-shows are not refunded in this demo policy.",
+        };
+        const getSessionBookings = (sessionId, bookingsInput) =>
+          [...(bookingsInput || bookings)]
+            .filter((booking) => booking.sessionId === sessionId)
+            .sort((left, right) => `${left.createdAt}-${left.id}`.localeCompare(`${right.createdAt}-${right.id}`));
+        const getSessionBookingSummary = (sessionInput, bookingsInput) => {
+          const session = normalizeSessionCapacitySettings(sessionInput);
+          const rows = getSessionBookings(session.id, bookingsInput);
+          const capacity = session.spots;
+          const overbookingLimit = session.allowOverbooking ? session.overbookingLimit : 0;
+          const waitlistLimit = session.waitlistEnabled ? session.waitlistLimit : 0;
+          const counts = { confirmed: 0, overbooked: 0, waitlisted: 0, blocked: 0 };
+          const mapped = rows.map((booking, index) => {
+            let bookingStatus = "blocked";
+            if (index < capacity) {
+              bookingStatus = "confirmed";
+            } else if (index < capacity + overbookingLimit) {
+              bookingStatus = "overbooked";
+            } else if (index < capacity + overbookingLimit + waitlistLimit) {
+              bookingStatus = "waitlisted";
+            }
+            counts[bookingStatus] += 1;
+            return { ...booking, bookingStatus };
+          });
+          let nextBookingStatus = "blocked";
+          if (counts.confirmed < capacity) {
+            nextBookingStatus = "confirmed";
+          } else if (counts.overbooked < overbookingLimit) {
+            nextBookingStatus = "overbooked";
+          } else if (counts.waitlisted < waitlistLimit) {
+            nextBookingStatus = "waitlisted";
+          }
+          return {
+            session,
+            bookings: mapped,
+            counts: { total: mapped.length, ...counts },
+            limits: { capacity, overbooking: overbookingLimit, waitlist: waitlistLimit },
+            remaining: {
+              confirmed: Math.max(0, capacity - counts.confirmed),
+              overbooking: Math.max(0, overbookingLimit - counts.overbooked),
+              waitlist: Math.max(0, waitlistLimit - counts.waitlisted),
+            },
+            nextBookingStatus,
+            isAtCapacity: counts.confirmed >= capacity,
+            isClosed:
+              session.autoCloseWhenFull &&
+              nextBookingStatus === "blocked" &&
+              !session.waitlistEnabled &&
+              !session.allowOverbooking,
+          };
+        };
+        const applyBranding = (brandingInput) => {
+          const branding = { ...defaultBranding, ...(brandingInput || {}) };
+          const root = document.documentElement;
+          root.style.setProperty("--accent", branding.primary);
+          root.style.setProperty("--today-ring", branding.primary);
+          root.style.setProperty("--accent-strong", branding.accent);
+          root.style.setProperty("--card-bg", rgba(branding.surface, 0.95));
+          root.style.setProperty("--day-bg", rgba(branding.surface, 0.92));
+          root.style.setProperty("--accent-soft", rgba(branding.primary, 0.12));
+          root.style.setProperty("--shadow-accent", `0 14px 28px ${rgba(branding.primary, 0.24)}`);
+          root.style.setProperty("--button-solid-text", branding.primaryText);
+          root.style.setProperty("--primary-fill-text", branding.primaryText);
+          root.style.setProperty("--button-soft-text", branding.primary);
+          root.style.setProperty("--interactive-hover-border", rgba(branding.primary, 0.34));
+          root.style.setProperty(
+            "--interactive-hover-bg",
+            `linear-gradient(135deg, ${rgba(branding.surface, 0.98)}, ${rgba(branding.primary, 0.08)})`,
+          );
+          root.style.setProperty("--interactive-selected-border", branding.primary);
+          root.style.setProperty(
+            "--interactive-selected-bg",
+            `linear-gradient(135deg, ${rgba(branding.surface, 0.98)}, ${rgba(branding.primary, 0.08)})`,
+          );
+          root.style.setProperty(
+            "--interactive-selected-shadow",
+            `inset 0 0 0 2px ${rgba(branding.primary, 0.32)}, 0 16px 30px ${rgba(branding.primary, 0.12)}`,
+          );
+          root.style.setProperty(
+            "--page-bg",
+            `radial-gradient(circle at top, ${rgba(branding.primary, 0.16)} 0%, ${rgba(
+              branding.primary,
+              0,
+            )} 26%), linear-gradient(180deg, #f7f9f8 0%, #edf1ef 55%, #e3e8e5 100%)`,
+          );
+          root.dataset.buttonStyle = branding.buttonStyle;
+          root.dataset.bookingTheme = branding.bookingTheme;
+          return clone(branding);
+        };
+        window.DopeScheduleStore = {
+          defaultSessions: clone(sessions),
+          defaultBranding: clone(defaultBranding),
+          defaultPaymentSettings: clone(defaultPaymentSettings),
+          loadSessions: () => clone(sessions),
+          loadBookings: () => clone(bookings),
+          loadBranding: () => clone(defaultBranding),
+          loadPaymentSettings: () => clone(defaultPaymentSettings),
+          normalizeSessionCapacitySettings,
+          getSessionBookings,
+          getSessionBookingSummary,
+          applyBranding,
+          addBooking: (booking) => {
+            const session = sessions.find((item) => item.id === booking.sessionId);
+            if (!session) {
+              return null;
+            }
+            const summary = getSessionBookingSummary(session, bookings);
+            if (summary.nextBookingStatus === "blocked") {
+              return null;
+            }
+            const nextBooking = {
+              ...booking,
+              id: booking.id || `demo-booking-${bookings.length + 1}`,
+              bookingStatus: summary.nextBookingStatus,
+            };
+            bookings.push(nextBooking);
+            return clone(nextBooking);
+          },
+        };
+        applyBranding(defaultBranding);
+      })();
+    </script>
+    <script src="../js/public-booking.js"></script>
+  </body>
+</html>

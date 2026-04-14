@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login</title>
+    <link rel="icon" type="image/webp" href="../img/logo-green.webp" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../css/admin.css" />
+  </head>
+  <body>
+    <header class="site-header" aria-label="Site header">
+      <div class="site-header-inner">
+        <img
+          src="../img/logo-green.webp"
+          alt="Dance Booking System logo"
+          class="site-logo"
+        />
+        <a class="calendar-nav" href="booking.html">Back to Site</a>
+      </div>
+    </header>
+
+    <main class="calendar-shell">
+      <section class="calendar-card" style="width: min(460px, 100%);">
+        <p class="calendar-eyebrow">Account Access</p>
+        <h1 class="calendar-title">Login</h1>
+        <p class="public-copy">
+          Sign in to continue to your dashboard or protected booking tools.
+        </p>
+
+        <form class="admin-form" style="margin-top: 24px;">
+          <label class="admin-field">
+            <span>Email</span>
+            <input type="email" name="email" placeholder="name@example.com" required />
+          </label>
+
+          <label class="admin-field">
+            <span>Password</span>
+            <input type="password" name="password" placeholder="Enter your password" required />
+          </label>
+
+          <div class="admin-form-actions">
+            <p class="admin-form-status">Authentication is not wired up yet.</p>
+            <div class="admin-form-buttons">
+              <button type="submit" class="calendar-create">Login</button>
+            </div>
+          </div>
+        </form>
+      </section>
+    </main>
+  </body>
+</html>

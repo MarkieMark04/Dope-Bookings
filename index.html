@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dance Bookings</title>
+    <link rel="icon" type="image/webp" href="img/logo-green.webp" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="css/index.css" />
+  </head>
+  <body>
+    <header class="site-header" aria-label="Site header">
+      <div class="site-header-inner">
+        <a
+          href="index.html"
+          class="site-brand"
+          aria-label="Dance Bookings home"
+        >
+          <img
+            src="img/dope-bookings.png"
+            alt="Dance Bookings logo"
+            class="site-logo"
+          />
+        </a>
+        <nav class="site-nav" aria-label="Primary navigation">
+          <a href="#" class="site-nav-link is-active" aria-current="page">Home</a>
+          <a href="#" class="site-nav-link">Features</a>
+          <a href="#" class="site-nav-link">Pricing</a>
+          <a href="#" class="site-nav-link">About</a>
+          <a href="#" class="site-nav-link">Contact</a>
+        </nav>
+        <a href="html/login.html" class="calendar-nav site-header-login">
+          <i class="fa-solid fa-user" aria-hidden="true"></i>
+          <span>Sign In</span>
+        </a>
+      </div>
+      <div class="site-header-hero">
+        <img
+          src="img/dope-bookings-background.png"
+          alt="New Zealand lake landscape"
+          class="site-header-image"
+        />
+        <div class="site-hero-overlay" aria-label="Welcome message">
+          <h1 class="site-hero-welcome">Welcome</h1>
+          <p class="site-hero-question">How can we help you?</p>
+          <div class="site-hero-intro">
+            <h2 class="site-hero-title">Try it out</h2>
+            <p class="site-hero-copy">
+              We have put together a fantastic booking system that allows
+              Teachers to put together their Classes &amp; Events also for
+              Students to Book their favourite class!
+            </p>
+            <div class="site-hero-actions">
+              <a href="html/demo-booking.html" class="site-hero-button">Demo</a>
+              <a href="html/booking.html" class="site-hero-button">Tour</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main class="calendar-shell">
+      <section class="booking-showcase" aria-labelledby="booking-showcase-title">
+        <div class="booking-showcase-heading">
+          <h2 id="booking-showcase-title" class="booking-showcase-title">
+            Ready-Made Booking System
+          </h2>
+          <span class="booking-showcase-divider" aria-hidden="true"></span>
+        </div>
+
+        <article class="booking-feature booking-feature-front">
+          <div class="booking-feature-media">
+            <p class="booking-feature-label">Front-End</p>
+            <figure class="booking-feature-frame">
+              <img
+                src="img/dance-booking.png"
+                alt="Front-end booking calendar view"
+                class="booking-feature-image"
+              />
+            </figure>
+          </div>
+          <div class="booking-feature-copy">
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+              enim ad minim veniam, quis nostrud exercitation ullamco laboris
+              nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
+              reprehenderit.
+            </p>
+          </div>
+        </article>
+
+        <article class="booking-feature booking-feature-back">
+          <div class="booking-feature-copy">
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+              enim ad minim veniam, quis nostrud exercitation ullamco laboris
+              nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
+              reprehenderit.
+            </p>
+          </div>
+          <div class="booking-feature-media">
+            <p class="booking-feature-label">Back-End</p>
+            <figure class="booking-feature-frame">
+              <img
+                src="img/back-end.png"
+                alt="Back-end class management dashboard"
+                class="booking-feature-image"
+              />
+            </figure>
+          </div>
+        </article>
+      </section>
+    </main>
+
+    <div class="section-divider" aria-hidden="true">
+      <img
+        src="img/divider.png"
+        alt=""
+        class="section-divider-image"
+      />
+    </div>
+
+    <section class="video-showcase" aria-labelledby="video-showcase-title">
+      <div class="video-showcase-inner">
+        <div class="booking-showcase-heading">
+          <h2 id="video-showcase-title" class="booking-showcase-title">
+            See It In Action
+          </h2>
+          <span class="booking-showcase-divider" aria-hidden="true"></span>
+        </div>
+
+        <div class="video-showcase-frame">
+          <video
+            class="video-showcase-player"
+            autoplay
+            muted
+            loop
+            playsinline
+            preload="metadata"
+          >
+            <source src="img/example.mp4" type="video/mp4" />
+          </video>
+        </div>
+      </div>
+    </section>
+
+    <footer class="site-footer">
+      <p class="site-footer-copy">&copy; Reserved Dope Bookings</p>
+      <p class="site-footer-credit">Powered by Dashing Web Designs.</p>
+    </footer>
+  </body>
+</html>
